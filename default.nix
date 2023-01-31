@@ -389,11 +389,12 @@ lib.makeScope pkgs.newScope (self: {
     , groups ? [ ]
     , checkGroups ? [ "dev" ]
     , extras ? [ "*" ]
+    , extraPackages ? [ ]
     , ...
     }@attrs:
     let
       poetryPython = self.mkPoetryPackages {
-        inherit pyproject poetrylock overrides python pwd preferWheels groups checkGroups extras;
+        inherit pyproject poetrylock overrides python pwd preferWheels groups checkGroups extras extraPackages;
       };
       py = poetryPython.python;
 
