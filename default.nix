@@ -148,6 +148,7 @@ lib.makeScope pkgs.newScope (self: {
     , groups ? [ ]
     , checkGroups ? [ "dev" ]
     , extras ? [ "*" ]
+    , extraPackages ? ps: [ ]
     }:
     let
       /* The default list of poetry2nix override overlays */
@@ -282,7 +283,7 @@ lib.makeScope pkgs.newScope (self: {
           (if builtins.typeOf overrides == "list" then overrides else [ overrides ])
         );
       packageOverrides = lib.foldr lib.composeExtensions (self: super: { }) overlays;
-      py = python.override { inherit packageOverrides; self = py; };
+      py = (python.override { inherit packageOverrides; self = py; }).withPackages extraPackages;
 
       inputAttrs = mkInputAttrs { inherit py pyProject groups checkGroups extras; attrs = { }; includeBuildSystem = false; };
 
@@ -389,7 +390,7 @@ lib.makeScope pkgs.newScope (self: {
     , groups ? [ ]
     , checkGroups ? [ "dev" ]
     , extras ? [ "*" ]
-    , extraPackages ? [ ]
+    , extraPackages ? ps: [ ]
     , ...
     }@attrs:
     let
