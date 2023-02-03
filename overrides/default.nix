@@ -2828,6 +2828,10 @@ lib.composeManyExtensions [
               '';
             }
         );
+
+      y-py = super.y-py.override {
+        preferWheel = true;
+      };
     }
   )
 ]
