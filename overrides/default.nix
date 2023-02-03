@@ -1175,11 +1175,6 @@ lib.composeManyExtensions [
         }
       );
 
-      # Calls Cargo at build time for source builds and is really tricky to package
-      maturin = super.maturin.override {
-        preferWheel = true;
-      };
-
       mccabe = super.mccabe.overridePythonAttrs (
         old: {
           buildInputs = (old.buildInputs or [ ]) ++ [ self.pytest-runner ];
