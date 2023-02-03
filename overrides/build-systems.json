@@ -14741,6 +14741,9 @@
   "rfc3986": [
     "setuptools"
   ],
+  "rfc3986-validator": [
+    "setuptools"
+  ],
   "rfc3987": [
     "setuptools"
   ],
