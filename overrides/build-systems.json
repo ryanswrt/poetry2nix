@@ -9928,9 +9928,6 @@
   "orderedmultidict": [
     "setuptools"
   ],
-  "orjson": [
-    "setuptools"
-  ],
   "orm": [
     "setuptools"
   ],
