@@ -903,11 +903,7 @@ lib.composeManyExtensions [
       );
 
       trio = super.trio.overridePythonAttrs (old: {
-        nativeBuildInputs = (old.nativeBuildInputs or [ ])
-          ++ [ self.async_generator self.idna ];
         buildInputs = (old.buildInputs or [ ])
-          ++ [ self.async_generator self.idna ];
-        propagatedBuildInputs = (old.propagatedBuildInputs or [ ])
           ++ [ self.async_generator self.idna ];
       });
 
